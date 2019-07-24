@@ -1,0 +1,40 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core">
+    
+    <h:head>
+        <title>DesafioESIG</title>
+    </h:head>
+    <h:body>
+        <font face="verdana">
+            <center>
+                <h:form>
+                    <h1>NOTAS</h1> <br/>
+                    <h:panelGrid columns="3">
+                        Descrição: <h:inputText id="descricaoTxt" value="#{notasBean.nota.descricao}"/>
+                        <h:commandButton value="Salvar" action="#{notasBean.adicionarNota()}"/>
+                    </h:panelGrid>
+                    <br/>
+                    <h:dataTable value="#{notasBean.listarNotas()}" var="Tabela" border="0">
+                        <h:column>
+                            <!--<f:facet name="header">
+                                NOTAS
+                            </f:facet>-->
+                            <h:outputText value="#{Tabela.descricao}"/>
+                        </h:column>
+                        <h:column>
+                            <!--<f:facet name="header">
+                                AÇÕES
+                            </f:facet>-->
+                           |<h:commandLink value=" Editar " action="#{notasBean.carregarNota(Tabela)}"/>|
+                            <h:commandLink value=" Remover" action="#{notasBean.removerNota(Tabela)}"/>
+                        </h:column>
+                    </h:dataTable>
+                </h:form>
+            </center>
+        </font>
+    </h:body>
+</html>
+
